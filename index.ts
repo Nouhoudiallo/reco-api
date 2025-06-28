@@ -1,12 +1,18 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import prisma from "@/lib/prisma";
+import cors from "cors";
 
 const app = express();
 const port = 3000;
 
 // Ajoutez ce middleware pour analyser les requêtes JSON
 app.use(express.json());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");
